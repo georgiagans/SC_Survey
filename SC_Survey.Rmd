@@ -43,7 +43,7 @@ Here are responses about anything that affects the day to day life of students. 
 The responses in this group, as opposed to the previous one, are more about students' overall well being than the smaller/more specific details of their day to day. This includes things like mental health support, academic needs, support for special education, general curricula, and student safety. 
 
 ##### Communication
-This group captures any comments about communication throughout the district. This may be from admininstration to teacher, administration to parents, teachers to parents, etc.
+This group captures any comments about communication throughout the district. This may be from administration to teacher, administration to parents, teachers to parents, etc.
 
 ##### Social Issues
 This constitutes a small but important set of responses. The Social Issue category includes responses about equity and inclusion, diversity, cultural and racial awareness, and LGBTQ+ issues.
@@ -61,7 +61,7 @@ This category is mostly made up of people who express that they want to keep pol
 This group includes responses about discipline and holding students accountable. For the most part, they are complaints about students not being disciplined for disruptive behavior.
 
 ##### Technology
-Most of the responses here are about chromebook usage or the use of softwares like PowerSchool and Schoology.
+Most of the responses here are about chromebook usage or the use of software like PowerSchool and Schoology.
 
 ##### General Positive
 This is where I put responses that did not quite fall into any of the aforementioned categories but were something positive about the district.
