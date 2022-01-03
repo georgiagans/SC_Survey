@@ -69,7 +69,7 @@ This is where I put responses that did not quite fall into any of the aforementi
 ##### General Negative
 This is where I put responses that were more negative in nature and, like the general positive category, did not quite fall into any of the other categories.
 
-##### N/A
+##### None (N/A)
 This is where the blank responses or responses such as "Nothing" or "I don't know" fall.
 
 
@@ -90,6 +90,7 @@ From this, we can see the number of responses within each designation, which I b
 ```{r}
 # Calculating the counts for each category
 response_counts <- data %>%
+  filter(Category != "None") %>%
   group_by(Category) %>%
   summarize("Count" = n()) %>%
   arrange(desc(Count))
@@ -292,7 +293,7 @@ There were no positive responses which were directly about politics.
 
 "More school spirit and we are losing a lot of kids to Sturgis Schools/UCT/and Falmouth Academy. Need to be more proactive with advertising in the middle school/elementary years."
 
-#### N/A
+#### None (N/A)
 I will not present any responses from this group.
 
 

@@ -1872,8 +1872,8 @@ div.tocify {
 <h5>General Negative</h5>
 <p>This is where I put responses that were more negative in nature and, like the general positive category, did not quite fall into any of the other categories.</p>
 </div>
-<div id="na" class="section level5">
-<h5>N/A</h5>
+<div id="none-na" class="section level5">
+<h5>None (N/A)</h5>
 <p>This is where the blank responses or responses such as “Nothing” or “I don’t know” fall.</p>
 </div>
 </div>
@@ -2016,6 +2016,7 @@ TeachersStaff_Positive
 <p>From this, we can see the number of responses within each designation, which I believe is important in understanding the biggest concerns of the community. Here is a table of the counts in descending order.</p>
 <pre class="r"><code># Calculating the counts for each category
 response_counts &lt;- data %&gt;%
+  filter(Category != &quot;None&quot;) %&gt;%
   group_by(Category) %&gt;%
   summarize(&quot;Count&quot; = n()) %&gt;%
   arrange(desc(Count))
@@ -2036,14 +2037,6 @@ Count
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-236
-</td>
-</tr>
 <tr>
 <td style="text-align:left;">
 TeachersStaff_Positive
@@ -2402,8 +2395,8 @@ Tech_Positive
 <p>“I would love elementary foreign language classes, more black history and “life skills” (modern Home Econ including credit/credit report knowledge, smart budgeting, healthy habits, etc.) I also think athletes should not be allowed to practice or play if they are under any type of investigation. Playing is a privilege and those that do should be held to high standards.&quot;</p>
 <p>“More school spirit and we are losing a lot of kids to Sturgis Schools/UCT/and Falmouth Academy. Need to be more proactive with advertising in the middle school/elementary years.”</p>
 </div>
-<div id="na-1" class="section level4">
-<h4>N/A</h4>
+<div id="none-na-1" class="section level4">
+<h4>None (N/A)</h4>
 <p>I will not present any responses from this group.</p>
 </div>
 </div>
