@@ -1,0 +1,459 @@
+---
+title: "School Committee Survey Analysis"
+author: "Georgia Gans"
+date: "January 3, 2022"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+    code_folding: hide
+  
+---
+# {.tabset}
+
+## Main Report
+In this report, I aim to give you a comprehensive overview of the responses to the School Committee Stakeholder Survey. I will explain how I approached the data, assessed the data, and I will present the general themes of the survey responses and some of the specific responses within each theme. Though I will try to give the most unbiased overview, I also acknowledge that the lens through which I viewed the data is not the only one or the correct one. As a result, my goal is to convey my own analysis but also introduce enough of the raw data so that you may draw conclusions that I did not.
+
+I would like to preface the rest of this report by saying that I used the R programming language to produce this document. In an attempt to be completely transparent, I have left in some of my "code chunks" but these should not be necessary to understand the data. They are hidden by default, but feel free to click the "Code" buttons that you will see periodically if you're curious about any of the code I used.
+
+```{r load-packages, message=FALSE, echo = FALSE}
+library(tidyverse)
+library(openintro)
+library(knitr)
+library(kableExtra)
+data <- read.csv("/Users/georgiagans/Downloads/SCSurvey.xlsxTidy.csv")
+data <- data %>%
+  rename(' ' = X)
+```
+
+### Approaching The Data
+I began this project by reading through the survey responses. Once I was able to get a good feel for the general themes of the responses, I then created categories. I tried to make categories that were as specific as possible but general enough so that I did not have to create a new category for each individual response. Then, within each category, I gave every response a designation of positive or negative. For example, one of the categories is communication. If someone had a positive response to some aspect of communication in the district, then I put that response into the "communication: positive" category, and vice versa if they said something negative. For lack of a better strategy, I gave any kind of suggestion the designation of "negative" because, though the responder might not be directly criticizing anything, they were commenting on something that isn't being done in the district but that they would like to see. If a response covered multiple categories, I placed it with whichever one seemed to be most important, or I put it into one of the "general" categories. The following is a list of the themes/categories, in no particular order, that I picked up on with a brief description of each:
+
+##### COVID-19
+This group includes any responses about COVID-19, including masks, vaccines, the Test and Stay program, etc. I also included anything that referenced students being back to in person school.
+
+##### Teachers & Staff
+This group includes responses that are about teachers or any staff that are not administration.
+
+##### Student Daily Life
+Here are responses about anything that affects the day to day life of students. This includes homework and schoolwork, bathroom access, lunch and recess, school start times, dress codes, and other aspects of students' daily lives.
+
+##### Student Support
+The responses in this group, as opposed to the previous one, are more about students' overall well being than the smaller/more specific details of their day to day. This includes things like mental health support, academic needs, support for special education, general curricula, and student safety. 
+
+##### Communication
+This group captures any comments about communication throughout the district. This may be from admininstration to teacher, administration to parents, teachers to parents, etc.
+
+##### Social Issues
+This constitutes a small but important set of responses. The Social Issue category includes responses about equity and inclusion, diversity, cultural and racial awareness, and LGBTQ+ issues.
+
+##### Administration
+The responses grouped here are about anything related to administration, whether that be principals, the superintendent, central office in general, or anything else where administration was the main theme.
+
+##### School Committee
+The number of responses in this group is small but also one that I thought was worth presenting. I placed anything that specifically discussed the role of the School Committee into this category.
+
+##### Politics
+This category is mostly made up of people who express that they want to keep politics out of school and "resist the liberal agenda" as much as possible.
+
+##### Discipline
+This group includes responses about discipline and holding students accountable. For the most part, they are complaints about students not being disciplined for disruptive behavior.
+
+##### Technology
+Most of the responses here are about chromebook usage or the use of softwares like PowerSchool and Schoology.
+
+##### General Positive
+This is where I put responses that did not quite fall into any of the aforementioned categories but were something positive about the district.
+
+##### General Negative
+This is where I put responses that were more negative in nature and, like the general positive category, did not quite fall into any of the other categories.
+
+##### N/A
+This is where the blank responses or responses such as "Nothing" or "I don't know" fall.
+
+
+### Assessing the Data
+Once I had decided on all of the categories, I changed the layout of the data a bit. I organized it such that each row is a single response to a single question, along with its category designation. Here is a glimpse at the first 10 rows so that you can see what I mean. Keep in mind that some of these responses are vague and I gave them a positive or negative designation based on which survey question they were in response to.
+
+```{r}
+# Picking out the first 10 rows of data
+first_ten <- head(data, 10)
+
+# Creating the table to present these first 10 rows
+kable_styling(bootstrap_options = c("striped", "hold_position"), kable(first_ten, booktabs = T)) %>%
+  column_spec(2, width = "30em")
+```
+<br>
+
+From this, we can see the number of responses within each designation, which I believe is important in understanding the biggest concerns of the community. Here is a table of the counts in descending order.
+```{r}
+# Calculating the counts for each category
+response_counts <- data %>%
+  group_by(Category) %>%
+  summarize("Count" = n()) %>%
+  arrange(desc(Count))
+
+# Creating the table to present counts
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(response_counts, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "300px")
+```
+<br> 
+
+Please see the "Complete Data" tab at the top of the screen for the full dataset.
+
+### My Analysis
+
+Finally, I will go through each category and pick out a few responses from each which I believe are representative of the bulk of them.
+
+
+#### COVID-19
+###### Positive (42 Responses)
+"We have good schools filled with great teachers, staff, and principles. The schools take Covid seriously and are always trying to keep people healthy and safe. The district is kind and cares about our community and the students within it."
+
+"Throughout COVID they teachers and school has done so much to keep the kids engaged and excited about learning. I’ve seen so much growth from my son over the last year and a half."
+
+"The test and stay program is very helpful to keep students in school"
+
+"Handling of Covid (Nearly a “can’t win” situation given how politicized it’s gotten, but the schools have handled it well)"
+
+###### Negative (46 Responses)
+"Get rid of the masks please"
+
+"I would like to ask for bringing back the weekly emails about our Covid numbers in order to increase our clarity of decision making. It feels important now that we are back int he we are back in winter months to have a policy of doing this"
+
+"With the test and stay ALL kids and staff should be tested, NOT just the unvaccinated as new information shows us the vaccinated are getting and spreading it too."
+
+"I am saddened to see vaccination clinics in our schools. This is the role of a physician, should be between a person and theyre doctor, and teachers work hard enough without having to be interrupted by this in their school day or have to deal with possible side effects coming from the children. Nobody in their right mind would bring a child to school for their DPT or measles vaccines and they shouldnt be doing it for the covid one either!"
+
+#### Teachers & Staff
+###### Positive (131 Responses)
+"Some of the best experiences I have had at this District is the staff. I believe that the staff works hard to make school easier and more understandable for my peers and I, and they understand when you have any problems or situations and they comfort/help you with them."
+
+"Incredible staff support and dedication to help our child find the right learning environment"
+
+"Some of the staff who really work with students on a daily basis “in the trenches” are very supportive kind people"
+
+"My children are not a number. The teachers and staff know my children and genuinely want to better them."
+
+###### Negative (23 Responses)
+"Teachers are worn thin and exhausted. Too many expectations and responsibilities!"
+
+"Teacher attendance - a repeat issue across all of our time in Falmouth - is an issue. I get it, it’s Covid, but even before the pandemic there has been an issue with teachers being pulled away for both professional (training, education, administration) and personal reasons. During Covid it’s been worse than usual. My child’s teachers are usually absent several days a week."
+
+Additional classroom support for teachers. More assistants to help students in the classrooms. Too many needs with just one adult in the classroom to meet each student where they are.
+
+
+#### Student Daily Life
+###### Positive (8 Responses)
+"I really like how we can chose to eat outside or inside because it is the one time in the school day that we are able to go outside and get a little movement."
+
+"The wendsday afternoon Xtra time is helpful at Lawrence. Thanks"
+
+"Not much homework for the kids"
+
+###### Negative (65 Responses)
+"School meals - although they are free of charge, for growing kids it would be nice to see a better variety and balance of healthier choices that still taste good"
+
+"The children do not have enough time for lunch or recess or even to go to the bathroom during the school day; they seem to be very rushed and unnecessarily stressed. I think we should be able to educate our children well while also providing them an opportunity to eat their lunch in a fun and relaxed manner and have time to get some exercise."
+
+"The Lawrence dress code is sexist, and is due to be altered. None of the students like it."
+
+#### Student Support
+###### Positive (20 Responses)
+"Positives are when we reached Morse Pond with my son and we finally had people who took is seriously about his reading disability. After getting him independently evaluated the team at both Morse Pond and Lawrence School have been amazing in helping him. Especially Meg Valdes and all the spec Ed people. The teachers at North Falmoyth and our amazing principal there are just awesome."
+
+"Overall, the schools are supportive towards student’s needs in learning."
+
+"I love that the school has plays that everyone is welcome in, and the all of the after school activities, so everyone has a large variety of things to do."
+
+
+###### Negative (50 Responses)
+"We need more opportunities for kids to get internships and work alongside professionals in the career paths that interest the students. Counselors need to be more engaged with students in high school."
+
+"Less money should be spent on consultants (but keep the BCBA consulting which is crucial) and speakers who spend minimal time at the schools (although Dr. Brown was amazing!) & more money should be spent more directly on the students such as adding much needed adjustment counselors!"
+
+"Schools need more money. Buildings need updates, sports need support, music and arts need support. Invest in our future. We will have a better community because of it."
+
+
+
+#### Communication
+###### Positive (24 Responses)
+"For our family, the Falmouth school district has been doing a phenomenal job from communication to in school support and we couldn’t be more pleased to be a part of this community"
+
+"Lots of emails from the principal to communicate-much appreciated !"
+
+"Great communication from Superintendent and Lawrence School Principal. Seeing my daughter acclimate so well, after a year of fully remote work, has been such a relief. Participation in sports has helped her greatly. Feedback from my daughter about her teachers has been good in most cases."
+
+###### Negative (40 Responses)
+"Communication across the district needs to improve. Giving teachers time when presenting PD for all the technology, new district initiatives focusing on a few things at time. Teachers are fielding a lot from dealing with the pandemic, social emotional needs of students and families and new resources to learn. When communication is clear and action of the district are more conscience teachers are not spread so thin and may help their productivity and understanding of the administrations vision."
+
+"All email correspondence should be consistent from all locations including Superintendent office. NO ATTACHMENTS. Mr Bushy has a great format that all recipients can easily read."
+
+"Homogenize how teachers are supposed to communicate with parents about what the kids do at school, or answer emails about various questions parents have. The responsiveness is very variable between teachers."
+
+
+#### Social Issues
+###### Positive (5 Responses)
+"Theres safe spaces for Lgbtq+ and all the teachers are kind and always willing to help."
+
+"More openness, more inclusiveness"
+
+"Steps towards Cultural Proficiency"
+
+###### Negative (21 Responses)
+"I don’t think we are being taught enough about other cultures like Native American and African American in history."
+
+"There is a lack of cultural proficiency in the district in that parents who have a great deal of money can influence the district such that their children can be placed out of district but other students with greater educational need but the children of parents without funds or the knowledge to challenge the district are often not afforded the same opportunity."
+
+"Work on diversity feels like lip service. Change needs to be foundational and authentic."
+
+
+
+#### Administration
+###### Positive (16 Responses)
+"our school district is well aware of our needs and does its best to accomplish them. our superintendent is really involved in our schools and does an excellent job. I believe parents appreciate all the school committee in the budget role, a role that can be criticized easily. but we live in a difficult era, and our children have all they need thanks to all the district hard work."
+
+"I love how involved the building administrators are in the day to day happenings at the school. My kids will often say “Mr. Adams came in to say hi today!” Or “Mrs. Varao said she heard I was super brave at the doctors.” I also can not say enough how AMAZING my sons kindergarten teaching assistant is. I think it is so important that we do what we can as a district to keep class-sizes small and assistants in the rooms. The teachers have been incredible and because of them, both my children love going to school everyday."
+
+"Dr. Duerr continues to lead effectively through this difficult time."
+
+###### Negative (35 Responses)
+"Some teachers still have hope that the administration will change its ways. Otherwise I have seen a massive downward trend in falmoutb. Certainly rethinking how many more students we entrust this district to teach"
+
+"It would be great if the people who make the rules about how the district runs were more in touch with what families and teachers are experiencing daily before making decisions about how things will be done."
+
+"Administration is out of touch with classrooms and the day to day struggles that are going on with students and teachers. Discipline for behaviors is non existent with restorative practices there is no accountability."
+
+
+
+#### School Committee
+###### Positive
+There were no positive responses which were directly about the school committee.
+
+###### Negative (10 Responses)
+"When I have listened to a School Committee Meeting, they seem to shut down any discussion that borders on any issues that they don’t want to discuss."
+
+"The school committee members should spend some time in the school buildings observing and participating in day to day activities. Many of them have no idea. The big picture is only clear when all the parts are put in place."
+
+"Negativity between Union & School Admin & School Committee. School Committee making data driven decisions or making statements based on their own personal opinion, but not based on experience in the classroom or from research. Stop catering to parents and do what is best for students."
+
+
+#### Politics
+###### Positive
+There were no positive responses which were directly about politics.
+
+###### Negative (8 Responses)
+"Focus needs to return to teaching kids actual subjects objectively and away from trying to coparent and create little activists."
+
+"Resist the indoctrination of students with leftist and Marxist ideology, teach the love of our nation and be proud of our history. Improve physical fitness for students, because physical fitness improves the body and the mind, for example offer daily taekwondo classes after school for all interested students."
+
+"The schools should be working with parents not going behind their backs or teaching political agendas but the basics to help young minds"
+
+
+
+#### Discipline
+###### Positive (3 Responses)
+"Moving towards positive discipline at FJS"
+
+"no bullying supper friendly always nice."
+
+###### Negative (26 Responses)
+"Behavior and expectation of students is declining. While supporting social emotional learning is important students need to be held accountable. The behavior and needs of a few are starting to take away from the majority."
+
+"The district needs to come up with a better solution to control students with behavioral problems. These students disrupt the classroom and impede the learning of the other students in the class. By integrating these children, you are doing a disservice to the majority of the students who know how to behave."
+
+"Zero tolerance punishes kids who stand up to bullying more than those bullying. Change it."
+
+
+#### Technology
+###### Positive (1 Responses)
+"Technology access and supplies have been a positive. Outdoor classroom spaces are a great to see across the district."
+
+###### Negative (9 Responses)
+"Less iPad/chrome books. My child doesn’t need a device sent home on weekends or over vacations or any other time."
+
+"Im surprised that the chrome books are still being used to the extent that they are and that the children are able to take them home. For first grade I don’t feel that this is necessary. My son carries his back and forth each day because he wants to but we don’t let him use it at home. I wish that they were just kept at school and used infrequently and just for academic related activities."
+
+"Parents can’t access schoology so we can’t see what is due, only what is to be graded in PowerSchool (which is different). Unless you make your kid open schoology for you to see, you have no idea what assignments are due."
+
+
+#### General Positive (96 responses)
+"We are a close knit, highly professional community who support one another. My department is very collegial and keeps each other apprised in what we are doing even without the benefit of common planning time."
+
+"There is engagement across the board and everyone seems to be invested at all levels in my experience"
+
+"I have enjoyed the majority of my time as a student in Falmouth public schools."
+
+#### General Negative (69 responses)
+"It would be nice to have more opportunities to be involved in the school itself to see what the children are experiencing. However I understand that this is difficult during Covid."
+
+"I would love elementary foreign language classes, more black history and “life skills” (modern Home Econ including credit/credit report knowledge, smart budgeting, healthy habits, etc.) I also think athletes should not be allowed to practice or play if they are under any type of investigation. Playing is a privilege and those that do should be held to high standards."
+
+"More school spirit and we are losing a lot of kids to Sturgis Schools/UCT/and Falmouth Academy. Need to be more proactive with advertising in the middle school/elementary years."
+
+#### N/A
+I will not present any responses from this group.
+
+
+### Acknowledgement
+I really appreciate the opportunity that I have had to conduct this survey analysis and I hope that my excitement for the project is apparent in this report. 
+
+I would like to specifically thank superintendent of the Falmouth Public Schools Dr. Lori Duerr for selecting me to take on this responsibility and for her help along the way, and School Committee Chair Natalie Kanellopoulos for her support throughout this process.
+
+I hope that my analysis helps the School Committee and the district as a whole to continue the many positive practices which are already in place and to use this as an opportunity to consider some of the community's suggestions for new practices. Please send me an email at ggans@smith.edu if you have any questions, comments or suggestions for me. Thank you!
+
+## Complete Dataset
+#### Single Table
+Here is the full table of responses if you would like to scroll through.
+
+```{r}
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(data, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "300px")
+```
+
+
+#### By Category
+This is the same data as above but separated by category so that it may be easier to navigate.
+
+##### COVID-19
+```{r}
+covid <- data %>%
+  filter(Category == "Covid_Positive" | Category == "Covid_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(covid, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### Teachers & Staff
+```{r}
+teachers <- data %>%
+  filter(Category == "TeachersStaff_Positive" | Category == "TeachersStaff_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(teachers, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### Student Daily Life
+```{r}
+daily <- data %>%
+  filter(Category == "DailyLife_Positive" | Category == "DailyLife_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(daily, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### Student Support
+```{r}
+support <- data %>%
+  filter(Category == "Support_Positive" | Category == "Support_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(support, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### Communication
+```{r}
+comm <- data %>%
+  filter(Category == "Communication_Positive" | Category == "Communication_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(comm, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### Social Issues
+```{r}
+social <- data %>%
+  filter(Category == "SocialIssue_Positive" | Category == "SocialIssue_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(social, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### Administration
+```{r}
+admin <- data %>%
+  filter(Category == "Admin_Positive" | Category == "Admin_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(admin, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### School Committee
+```{r}
+schoolcomm <- data %>%
+  filter(Category == "SchoolCommittee_Positive" | Category == "SchoolCommittee_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(schoolcomm, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### Politics
+```{r}
+politics <- data %>%
+  filter(Category == "Politics_Positive" | Category == "Politics_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(politics, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### Discipline
+```{r}
+discipline <- data %>%
+  filter(Category == "Discipline_Positive" | Category == "Discipline_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(discipline, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### Technology
+```{r}
+tech <- data %>%
+  filter(Category == "Tech_Positive" | Category == "Tech_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(tech, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### General Positive
+```{r}
+pos <- data %>%
+  filter(Category == "General_Positive") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(pos, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
+<br>
+
+##### General Negative
+```{r}
+neg <- data %>%
+  filter(Category == "General_Negative") %>%
+  select(Response, Category)
+
+kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(neg, booktabs = T)) %>%
+  scroll_box(width = "800px", height = "200px")
+```
