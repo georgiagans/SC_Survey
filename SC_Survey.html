@@ -2014,7 +2014,7 @@ TeachersStaff_Positive
 </table>
 <p><br></p>
 <p>From this, we can see the number of responses within each designation, which I believe is important in understanding the biggest concerns of the community. Here is a table of the counts in descending order.</p>
-<pre class="r"><code># Calculating the counts for each category
+<pre class="r"><code># Calculating the counts for each category (after removing N/A responses)
 response_counts &lt;- data %&gt;%
   filter(Category != &quot;None&quot;) %&gt;%
   group_by(Category) %&gt;%
@@ -2217,11 +2217,11 @@ Tech_Positive
 </table>
 </div>
 <p><br></p>
-<p>Please see the “Complete Data” tab at the top of the screen for the full dataset.</p>
+<p>I encourage you to see the “Complete Data” tab at the top of the screen for the full dataset.</p>
 </div>
 <div id="my-analysis" class="section level3">
 <h3>My Analysis</h3>
-<p>Finally, I will go through each category and pick out a few responses from each which I believe are representative of the bulk of them.</p>
+<p>Finally, I will go through each category and pick out a few responses from each which I believe are representative of the bulk of them. Please note that I did not edit any responses so some of them have spelling or grammatical errors.</p>
 <div id="covid-19-1" class="section level4">
 <h4>COVID-19</h4>
 <div id="positive-42-responses" class="section level6">
@@ -2252,7 +2252,7 @@ Tech_Positive
 <h6>Negative (23 Responses)</h6>
 <p>“Teachers are worn thin and exhausted. Too many expectations and responsibilities!”</p>
 <p>“Teacher attendance - a repeat issue across all of our time in Falmouth - is an issue. I get it, it’s Covid, but even before the pandemic there has been an issue with teachers being pulled away for both professional (training, education, administration) and personal reasons. During Covid it’s been worse than usual. My child’s teachers are usually absent several days a week.”</p>
-<p>Additional classroom support for teachers. More assistants to help students in the classrooms. Too many needs with just one adult in the classroom to meet each student where they are.</p>
+<p>“Additional classroom support for teachers. More assistants to help students in the classrooms. Too many needs with just one adult in the classroom to meet each student where they are.”</p>
 </div>
 </div>
 <div id="student-daily-life-1" class="section level4">
@@ -2334,7 +2334,7 @@ Tech_Positive
 <h4>School Committee</h4>
 <div id="positive" class="section level6">
 <h6>Positive</h6>
-<p>There were no positive responses which were directly about the school committee.</p>
+<p>There were no positive responses which were mainly about the school committee.</p>
 </div>
 <div id="negative-10-responses" class="section level6">
 <h6>Negative (10 Responses)</h6>
@@ -2347,7 +2347,7 @@ Tech_Positive
 <h4>Politics</h4>
 <div id="positive-1" class="section level6">
 <h6>Positive</h6>
-<p>There were no positive responses which were directly about politics.</p>
+<p>There were no positive responses which were mainly about politics.</p>
 </div>
 <div id="negative-8-responses" class="section level6">
 <h6>Negative (8 Responses)</h6>

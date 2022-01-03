@@ -88,7 +88,7 @@ kable_styling(bootstrap_options = c("striped", "hold_position"), kable(first_ten
 
 From this, we can see the number of responses within each designation, which I believe is important in understanding the biggest concerns of the community. Here is a table of the counts in descending order.
 ```{r}
-# Calculating the counts for each category
+# Calculating the counts for each category (after removing N/A responses)
 response_counts <- data %>%
   filter(Category != "None") %>%
   group_by(Category) %>%
@@ -101,11 +101,11 @@ kable_styling(position = "left", bootstrap_options = c("striped", "hold_position
 ```
 <br> 
 
-Please see the "Complete Data" tab at the top of the screen for the full dataset.
+I encourage you to see the "Complete Data" tab at the top of the screen for the full dataset.
 
 ### My Analysis
 
-Finally, I will go through each category and pick out a few responses from each which I believe are representative of the bulk of them.
+Finally, I will go through each category and pick out a few responses from each which I believe are representative of the bulk of them. Please note that I did not edit any responses so some of them have spelling or grammatical errors.
 
 
 #### COVID-19
@@ -142,7 +142,7 @@ Finally, I will go through each category and pick out a few responses from each 
 
 "Teacher attendance - a repeat issue across all of our time in Falmouth - is an issue. I get it, it’s Covid, but even before the pandemic there has been an issue with teachers being pulled away for both professional (training, education, administration) and personal reasons. During Covid it’s been worse than usual. My child’s teachers are usually absent several days a week."
 
-Additional classroom support for teachers. More assistants to help students in the classrooms. Too many needs with just one adult in the classroom to meet each student where they are.
+"Additional classroom support for teachers. More assistants to help students in the classrooms. Too many needs with just one adult in the classroom to meet each student where they are."
 
 
 #### Student Daily Life
@@ -177,7 +177,6 @@ Additional classroom support for teachers. More assistants to help students in t
 "Schools need more money. Buildings need updates, sports need support, music and arts need support. Invest in our future. We will have a better community because of it."
 
 
-
 #### Communication
 ###### Positive (24 Responses)
 "For our family, the Falmouth school district has been doing a phenomenal job from communication to in school support and we couldn’t be more pleased to be a part of this community"
@@ -210,7 +209,6 @@ Additional classroom support for teachers. More assistants to help students in t
 "Work on diversity feels like lip service. Change needs to be foundational and authentic."
 
 
-
 #### Administration
 ###### Positive (16 Responses)
 "our school district is well aware of our needs and does its best to accomplish them. our superintendent is really involved in our schools and does an excellent job. I believe parents appreciate all the school committee in the budget role, a role that can be criticized easily. but we live in a difficult era, and our children have all they need thanks to all the district hard work."
@@ -227,10 +225,9 @@ Additional classroom support for teachers. More assistants to help students in t
 "Administration is out of touch with classrooms and the day to day struggles that are going on with students and teachers. Discipline for behaviors is non existent with restorative practices there is no accountability."
 
 
-
 #### School Committee
 ###### Positive
-There were no positive responses which were directly about the school committee.
+There were no positive responses which were mainly about the school committee.
 
 ###### Negative (10 Responses)
 "When I have listened to a School Committee Meeting, they seem to shut down any discussion that borders on any issues that they don’t want to discuss."
@@ -242,7 +239,7 @@ There were no positive responses which were directly about the school committee.
 
 #### Politics
 ###### Positive
-There were no positive responses which were directly about politics.
+There were no positive responses which were mainly about politics.
 
 ###### Negative (8 Responses)
 "Focus needs to return to teaching kids actual subjects objectively and away from trying to coparent and create little activists."
@@ -250,7 +247,6 @@ There were no positive responses which were directly about politics.
 "Resist the indoctrination of students with leftist and Marxist ideology, teach the love of our nation and be proud of our history. Improve physical fitness for students, because physical fitness improves the body and the mind, for example offer daily taekwondo classes after school for all interested students."
 
 "The schools should be working with parents not going behind their backs or teaching political agendas but the basics to help young minds"
-
 
 
 #### Discipline
@@ -295,7 +291,6 @@ There were no positive responses which were directly about politics.
 
 #### None (N/A)
 I will not present any responses from this group.
-
 
 ### Acknowledgement
 I really appreciate the opportunity that I have had to conduct this survey analysis and I hope that my excitement for the project is apparent in this report. 
