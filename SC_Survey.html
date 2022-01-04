@@ -1817,6 +1817,10 @@ div.tocify {
 <h2>Main Report</h2>
 <p>In this report, I aim to give you a comprehensive overview of the responses to the School Committee Stakeholder Survey. I will explain how I approached the data, assessed the data, and I will present the general themes of the survey responses and some of the specific responses within each theme. Though I will try to give the most unbiased overview, I also acknowledge that the lens through which I viewed the data is not the only one or the correct one. As a result, my goal is to convey my own analysis but also introduce enough of the raw data so that you may draw conclusions that I did not.</p>
 <p>I would like to preface the rest of this report by saying that I used the R programming language to produce this document. In an attempt to be completely transparent, I have left in some of my “code chunks” but these should not be necessary to understand the data. They are hidden by default, but feel free to click the “Code” buttons that you will see periodically if you’re curious about any of the code I used.</p>
+<div id="limitations" class="section level3">
+<h3>Limitations</h3>
+<p>Before analyzing the survey responses, it should be noted that it was sent out to a total of 5,793 staff members, students, and families. 338 responses were received, yielding a <strong>5.8% response rate</strong>. This is a limitation of my analysis because we can not be sure that the comments of this 5.8% of the community are representative of the whole community. It is also often the case with optional surveys that those who respond do so because they have more “extreme” opinions than the general population, so that may be true here. However, this does not indicate that the responses are meaningless. I found clear themes throughout the responses and therefore believe that many of the comments are relevant and important.</p>
+</div>
 <div id="approaching-the-data" class="section level3">
 <h3>Approaching The Data</h3>
 <p>I began this project by reading through the survey responses. Once I was able to get a good feel for the general themes of the responses, I then created categories. I tried to make categories that were as specific as possible but general enough so that I did not have to create a new category for each individual response. Then, within each category, I gave every response a designation of positive or negative. For example, one of the categories is communication. If someone had a positive response to some aspect of communication in the district, then I put that response into the “communication: positive” category, and vice versa if they said something negative. For lack of a better strategy, I gave any kind of suggestion the designation of “negative” because, though the responder might not be directly criticizing anything, they were commenting on something that isn’t being done in the district but that they would like to see. If a response covered multiple categories, I placed it with whichever one seemed to be most important, or I put it into one of the “general” categories. The following is a list of the themes/categories, in no particular order, that I picked up on with a brief description of each:</p>
@@ -13070,6 +13074,56 @@ Covid_Negative
 980
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+981
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+982
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+983
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+984
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+985
+</td>
+<td style="text-align:left;">
 Our teachers at Morse Pond consistently focus on creating a welcoming and affirming classroom environment.
 </td>
 <td style="text-align:left;">
@@ -13078,7 +13132,7 @@ TeachersStaff_Positive
 </tr>
 <tr>
 <td style="text-align:right;">
-981
+986
 </td>
 <td style="text-align:left;">
 dedicated staff, supportive families including PTOs, well stocked schools with masks, sanitizer, etc., as well as paper and other supplies, clean schools, adequate staff in my to support students
@@ -13089,7 +13143,7 @@ TeachersStaff_Positive
 </tr>
 <tr>
 <td style="text-align:right;">
-982
+987
 </td>
 <td style="text-align:left;">
 The positives I have experienced as a parent is having the kids back in school full time in person.
@@ -13100,7 +13154,7 @@ Covid_Positive
 </tr>
 <tr>
 <td style="text-align:right;">
-983
+988
 </td>
 <td style="text-align:left;">
 Teachers and staff genuinely care about students and each other. Experienced teachers are generous with their time and expertise, often mentoring and collaborating with new teachers well beyond paid hours. Support for enrichment programs is strong. Our students have many opportunities to engage in hands-on learning in the arts and STEM. Our principal wants to hear from staff and help solve problems. The mask mandate and test and stay program are helping us stay safe in person.
@@ -13111,7 +13165,7 @@ General_Positive
 </tr>
 <tr>
 <td style="text-align:right;">
-984
+989
 </td>
 <td style="text-align:left;">
 I believe there is a strong sense of needing to support the students and their mental health needs. Grateful for relationship with McLain and Gosnold. Strong music program has helped to keep many students at the high school level who otherwise may have utilized other options. Big fan of Clipper Time for all students. So impressed with the selection of classes offered at the High School. Only disappointment is it is hard for students who are on the AP track to take some amazing life skills classes like wood shop, cooking, etc.
@@ -13122,7 +13176,7 @@ Support_Positive
 </tr>
 <tr>
 <td style="text-align:right;">
-985
+990
 </td>
 <td style="text-align:left;">
 Nothing really
@@ -13133,7 +13187,7 @@ General_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-986
+991
 </td>
 <td style="text-align:left;">
 I like that more collaborations are being made between the district and the Woods Hole scientific community.
@@ -13144,7 +13198,7 @@ General_Positive
 </tr>
 <tr>
 <td style="text-align:right;">
-987
+992
 </td>
 <td style="text-align:left;">
 -Increased access to instructional technology -Preparedness for COVID -Return to in-person learning -School-community partnerships
@@ -13155,7 +13209,7 @@ General_Positive
 </tr>
 <tr>
 <td style="text-align:right;">
-988
+993
 </td>
 <td style="text-align:left;">
 We like our son’s teacher
@@ -13166,7 +13220,7 @@ TeachersStaff_Positive
 </tr>
 <tr>
 <td style="text-align:right;">
-989
+994
 </td>
 <td style="text-align:left;">
 There is very little attention to math and science learning. So little science is taught in grades K-6 and the math is all by rote and computer. The STMath program is not tied to specific standards, and it pushes students away from working collaboratively on problem solving.
@@ -13177,7 +13231,7 @@ Support_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-990
+995
 </td>
 <td style="text-align:left;">
 <em>district keeps asking classroom teachers to do more-for example SEL questions, FastBridge, ST Math , Fundations, Restorative Practices- all with very little training or direction.<br />
@@ -13189,7 +13243,7 @@ General_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-991
+996
 </td>
 <td style="text-align:left;">
 There seems to be a lot of things that happen behind closed doors where the families aren’t notified of changes being made (ex. teachers leaving and finding out by being out in the community rather than from school). There also seems to be a disconnect with the understanding of discipline and consequence and what it means. I don’t think we are preparing our kids for the ‘real world’ appropriately if they are hearing (or not having to deal with) a consequence for an inappropriate behavior. The consequence is the immediate part after a behavior occurs (good or bad) if it is a negative behavior there needs to be a consequence that matches the behavior that resonates for the child so they can begin to change. I have noticed this is falling by the wayside due to the restorative practice movement. Consequences can be restorative if they are processed correctly, they can’t be negated all together that will not help our children learn to be appropriate and good standing adults.
@@ -13200,7 +13254,7 @@ Discipline_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-992
+997
 </td>
 <td style="text-align:left;">
 <p>It often feels like the upper-level administration looks at teachers with a deficit mindset. Teachers are spending a lot of time on top-down initiatives and trainings with outside companies (Aperture, Seaside Educational Consultants, SafeSchools, etc). Yet outside consultants rarely understand our school culture or inspire lasting change.</p>
@@ -13213,7 +13267,7 @@ Admin_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-993
+998
 </td>
 <td style="text-align:left;">
 Need to stop constantly changing the reading/writing curriculum and math curriculum. It seems every 2-3 years there is a new ‘hot program’ and it takes too long to train the staff on how to use it and then implement it. Feel lack of continuity from grade to grade. Another issue is inconsistency with homework within the same grade, especially at Morse Pond. I feel there needs to be more consistency with Special Ed staffing at all the schools, but especially at the elementary level. Also should consider adding Portuguese as a language option at Lawrence and the High School.
@@ -13224,7 +13278,7 @@ Support_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-994
+999
 </td>
 <td style="text-align:left;">
 I would like teachers to listen to what my needs are for learning
@@ -13235,7 +13289,7 @@ TeachersStaff_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-995
+1000
 </td>
 <td style="text-align:left;">
 The approach taken by the District administration (and, to a lesser extent, the School Committee) has been hostile toward and unsupportive of the faculty. The negotiations between the groups keep stagnating, which is frustrating as well as offensive to me as a worker. I appreciate you asking for some feedback, because I do not feel heard or supported at the District level. The mandatory professional development that we have had over the past two years has been very demanding and takes more time than is designated in our meetings. We also do not get feedback nor are we allowed to give feedback on these professional development programs. I feel criticized and like I am not doing enough when this work is added to my already full plate. I want to be a strong teacher, but I do not feel encouraged by this current administration. We have made many personal and safety sacrifices for our jobs, and I do not feel like we are being compensated or even acknowledged for these efforts. We need to have a balance of professional development to also include pedagogy and our curriculum in the training.
@@ -13246,7 +13300,7 @@ Admin_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-996
+1001
 </td>
 <td style="text-align:left;">
 -Relationship between Central Admin/School Committee and Staff -Amount of meaningful PD and initiatives -Policing of the relationships between policy makers and third-party, for-profit vendors (e.g. Modern Teacher)
@@ -13257,64 +13311,13 @@ General_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-997
+1002
 </td>
 <td style="text-align:left;">
 Covid communication, school cases. School dod not utilize outdoor learning spaces when weather was nice.
 </td>
 <td style="text-align:left;">
 Covid_Negative
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-998
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-None
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-999
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-None
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1000
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-None
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1001
-</td>
-<td style="text-align:left;">
-Thank you for your support of students, staff, and community.
-</td>
-<td style="text-align:left;">
-General_Positive
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1002
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-None
 </td>
 </tr>
 <tr>
@@ -13332,6 +13335,57 @@ None
 1004
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1005
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1006
+</td>
+<td style="text-align:left;">
+Thank you for your support of students, staff, and community.
+</td>
+<td style="text-align:left;">
+General_Positive
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1007
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1008
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1009
+</td>
+<td style="text-align:left;">
 I was deemed a close contact at least five times in the week prior to this vacation. I could not find at-home COVID tests anywhere to ensure that I was not carrying the virus home. My stress level has been very high for a very long time because of this pandemic and because I do not want to overstress my emotionally exhausted students.
 </td>
 <td style="text-align:left;">
@@ -13340,7 +13394,7 @@ Covid_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-1005
+1010
 </td>
 <td style="text-align:left;">
 I’d love to provide more descriptive feedback but I am in fear of reprisals from the School Committee and/or Central Administration, which is a shared sentiment with many of my colleagues who I’ve spoken to.
@@ -13351,7 +13405,7 @@ Admin_Negative
 </tr>
 <tr>
 <td style="text-align:right;">
-1006
+1011
 </td>
 <td style="text-align:left;">
 </td>
@@ -13362,6 +13416,7 @@ None
 </tbody>
 </table>
 </div>
+<p><br> <br></p>
 </div>
 <div id="by-category" class="section level4">
 <h4>By Category</h4>

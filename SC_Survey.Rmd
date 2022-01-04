@@ -26,6 +26,8 @@ data <- read.csv("/Users/georgiagans/Downloads/SCSurvey.xlsxTidy.csv")
 data <- data %>%
   rename(' ' = X)
 ```
+### Limitations
+Before analyzing the survey responses, it should be noted that it was sent out to a total of 5,793 staff members, students, and families. 338 responses were received, yielding a **5.8% response rate**. This is a limitation of my analysis because we can not be sure that the comments of this 5.8% of the community are representative of the whole community. It is also often the case with optional surveys that those who respond do so because they have more "extreme" opinions than the general population, so that may be true here. However, this does not indicate that the responses are meaningless. I found clear themes throughout the responses and therefore believe that many of the comments are relevant and important.
 
 ### Approaching The Data
 I began this project by reading through the survey responses. Once I was able to get a good feel for the general themes of the responses, I then created categories. I tried to make categories that were as specific as possible but general enough so that I did not have to create a new category for each individual response. Then, within each category, I gave every response a designation of positive or negative. For example, one of the categories is communication. If someone had a positive response to some aspect of communication in the district, then I put that response into the "communication: positive" category, and vice versa if they said something negative. For lack of a better strategy, I gave any kind of suggestion the designation of "negative" because, though the responder might not be directly criticizing anything, they were commenting on something that isn't being done in the district but that they would like to see. If a response covered multiple categories, I placed it with whichever one seemed to be most important, or I put it into one of the "general" categories. The following is a list of the themes/categories, in no particular order, that I picked up on with a brief description of each:
@@ -309,7 +311,8 @@ Here is the full table of responses if you would like to scroll through.
 kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(data, booktabs = T)) %>%
   scroll_box(width = "800px", height = "300px")
 ```
-
+<br>
+<br>
 
 #### By Category
 This is the same data as above but separated by category so that it may be easier to navigate.
