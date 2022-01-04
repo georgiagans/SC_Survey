@@ -309,7 +309,8 @@ Here is the full table of responses if you would like to scroll through.
 kable_styling(position = "left", bootstrap_options = c("striped", "hold_position"), kable(data, booktabs = T)) %>%
   scroll_box(width = "800px", height = "300px")
 ```
-
+<br>
+<br>
 
 #### By Category
 This is the same data as above but separated by category so that it may be easier to navigate.
